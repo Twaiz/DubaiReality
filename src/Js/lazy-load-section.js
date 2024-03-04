@@ -5,7 +5,7 @@ function onEntry(entry) {
     }
   });
 }
-let options = { threshold: [0.2] };
+let options = { threshold: [0.05] };
 let observer = new IntersectionObserver(onEntry, options);
 let elements = document.querySelectorAll(".el-scroll-hidden");
 for (let elm of elements) {
