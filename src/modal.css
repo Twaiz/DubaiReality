@@ -1,0 +1,287 @@
+/* HEADER */
+
+body.show-modal {
+  overflow: hidden;
+}
+
+body.show-modal .backdrop {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+body.show-modal .modal {
+  transform: scale(1);
+}
+
+body.show-modal .header-content {
+  position: relative;
+  z-index: 1000;
+}
+
+body.show-modal .menu-icon {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.modal-close-menu {
+  width: 32px;
+  height: 32px;
+  stroke: #fff;
+}
+
+.backdrop {
+  position: relative;
+  position: fixed;
+  display: flex;
+
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background-color: #272727;
+  z-index: 999;
+
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 200ms ease-in-out, visibility 200ms ease-in-out;
+}
+
+.nav {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.nav-list {
+  display: block;
+}
+
+.nav-list::after {
+  content: "";
+  display: block;
+
+  width: 100%;
+  height: 0;
+
+  margin-top: 60px;
+  margin-bottom: 40px;
+
+  border: 1px solid #fcd54c;
+}
+
+.nav-item:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.nav-link {
+  font-family: var(--second-family);
+  font-weight: 600;
+  font-size: 36px;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.nav-btn {
+  display: block;
+
+  width: 165px;
+  height: 41px;
+
+  margin-bottom: 40px;
+
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 14px;
+  color: #000;
+  background-color: #fcd54c;
+  border-style: none;
+}
+
+.language-switcher {
+  display: flex;
+  margin-bottom: 40px;
+}
+
+.language-switcher-en,
+.language-switcher-ua {
+  font-family: var(--second-family);
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  text-align: right;
+  color: #929292;
+
+  border-style: none;
+  background-color: transparent;
+}
+
+.phone-link {
+  display: block;
+
+  font-family: var(--second-family);
+  font-weight: 600;
+  font-size: 16px;
+  color: #fff;
+}
+
+/* HERO */
+body.hero-show-modal {
+  overflow: hidden; 
+}
+
+body.hero-show-modal .hero-backdrop {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: initial;
+}
+
+body.hero-show-modal .hero-modal {
+  transform: scale(1);
+}
+
+.hero-backdrop {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 999;
+
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 200ms ease-in-out, visibility 200ms ease-in-out;
+}
+
+.hero-modal {
+  position: relative;
+
+  padding: 24px;
+  border-radius: 4px;
+  max-width: 640px;
+  width: 100%;
+  min-height: 380px;
+  background-color: #fff;
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
+    0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+
+  transform: scale(1.1);
+  transition: transform 200ms ease-in-out;
+}
+
+.hero-modal-title {
+  margin-bottom: 10px;
+
+  font-family: var(--second-family);
+  font-weight: 700;
+  font-size: 48px;
+  text-align: center;
+  color: #000;
+}
+
+.hero-modal-paragraph {
+  margin-bottom: 30px;
+
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 20px;
+  text-align: center;
+  color: #000;
+}
+
+.hero-modal-contact {
+  margin-bottom: 30px;
+}
+
+.hero-modal-input-name,
+.hero-modal-input-number {
+  position: relative;
+  display: block;
+
+  width: 100%;
+  max-width: 453px;
+  height: 50px;
+
+  margin: 0 auto;
+
+  font-family: var(--second-family);
+  font-weight: 400;
+  font-size: 16px;
+  color: #000;
+
+  border: 1px solid #929292;
+  border-top: #fff;
+  border-right: #fff;
+  border-left: #fff;
+}
+
+.hero-modal-input-name::placeholder,
+.hero-modal-input-number::placeholder {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  padding-top: 20px;
+
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero-modal-input-name:focus,
+.hero-modal-input-number:focus {
+  outline: none;
+}
+
+.hero-modal-input-name:focus::placeholder,
+.hero-modal-input-number:focus::placeholder {
+  transform: translateY(-40%);
+}
+
+.hero-modal-input-name {
+  margin-bottom: 15px;
+}
+
+.hero-modal-btn-send {
+  display: block;
+
+  margin: 0 auto;
+
+  width: 216px;
+  height: 54px;
+
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 18px;
+  text-align: center;
+  color: #000;
+  background-color: #fcd54c;
+  border-style: none;
+}
+
+.hero-modal-close-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  background-color: transparent;
+  border-style: none;
+}
+
+.hero-modal-close-menu {
+  width: 32px;
+  height: 32px;
+  stroke: #fcd54c;
+}

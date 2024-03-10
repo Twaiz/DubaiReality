@@ -15,22 +15,94 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/2.0.0/modern-normalize.min.css"
     />
-    <link rel="stylesheet" href="./main-1.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <link rel="stylesheet" href="./main.css" />
+    <link rel="stylesheet" href="./modal.css" />
   </head>
   <body>
+    
+    <div class="swiper-container">
+      
+      <ul class="swiper-wrapper projects-list">
+        <li class="swiper-slide project-item">
+          <img src="../image/426x386.jpg" alt="" />
+          <p class="project-description">Houses</p>
+          <p class="project-content">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Consequat
+            molestie integer aliquam consectetur. Faucibus vitae dui massa
+            tellus magna sit.
+          </p>
+          <a href="#" class="project-link"
+            >See project
+            <svg class="project-icon">
+              <use href="../image/Group-91-93.svg#icon-Group-91"></use></svg
+          ></a>
+        </li>
+
+        <li class="swiper-slide project-item">
+          <img src="../image/428x573 (1).jpg" alt="">
+          <p class="project-description">Villas</p>
+          <p class="project-content">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Consequat
+            molestie integer aliquam consectetur. Faucibus vitae dui massa
+            tellus magna sit.
+          </p>
+          <a href="#" class="project-link"
+            >See project
+            <svg class="project-icon">
+              <use href="../image/Group-91-93.svg#icon-Group-91"></use></svg
+          ></a>
+        </li>
+
+        <li class="swiper-slide project-item">
+          <img src="../image/428x573 (2).jpg" alt="">
+          <p class="project-description">Houses</p>
+          <p class="project-content">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Consequat
+            molestie integer aliquam consectetur. Faucibus vitae dui massa
+            tellus magna sit.
+          </p>
+          <a href="#" class="project-link"
+            >See project
+            <svg class="project-icon">
+              <use href="../image/Group-91-93.svg#icon-Group-91"></use></svg
+          ></a>
+        </li>
+
+        <li class="swiper-slide project-item">
+          <img src="../image/426x581 (1) (1).jpg" alt="">
+          <p class="project-description">Villas</p>
+          <p class="project-content">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Consequat
+            molestie integer aliquam consectetur. Faucibus vitae dui massa
+            tellus magna sit.
+          </p>
+          <a href="#" class="project-link"
+            >See project
+            <svg class="project-icon">
+              <use href="../image/Group-91-93.svg#icon-Group-91"></use></svg
+          ></a>
+        </li>
+      </ul>
+
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+
+      <div class="swiper-pagination"></div>
+
+      <div class="swiper-scrollbar"></div>
+    
+    </div>
+
     <!-- Верх страницы header -->
     <header class="main-header">
       <div class="container">
-        <div class="header-content">
+        <div class="backdrop js-backdrop">
           <nav class="nav">
-            <a href="./main.html" class="logo">
-              <div class="logo-content">
-                <span class="logo-title">DubaiRealty</span>
-                <span class="logo-subtitle">Real Estate</span>
-              </div>
-            </a>
-
-            <ul class="nav-list">
+            <ul class="nav-list js-nav-list">
               <li class="nav-item">
                 <a href="./services.html" class="nav-link">SERVICES</a>
               </li>
@@ -48,14 +120,27 @@
           <button type="button" class="nav-btn">Book a consultation</button>
 
           <ul class="language-switcher">
-            <button class="language-switcher-en curent-language">EN</button>
+            <button class="language-switcher-en">EN</button>
             <button class="language-switcher-ua">UA</button>
           </ul>
 
           <a href="tel:+3800446742510" class="phone-link"
             >+380 (044) 674-25-10</a
           >
-          <button type="button" class="menu-btn">
+          <button type="button" class="close-btn" data-action="close-modal">
+            <svg class="modal-close-menu">
+              <use href="../image/close-menu.svg#icon-close-menu"></use>
+            </svg>
+          </button>
+        </div>
+        <div class="header-content">
+          <a href="./main.html" class="logo">
+            <div class="logo-content">
+              <span class="logo-title">DubaiRealty</span>
+              <span class="logo-subtitle">Real Estate</span>
+            </div>
+          </a>
+          <button type="button" class="menu-btn" data-action="open-modal">
             <svg class="menu-icon">
               <use href="../image/menu-icon.svg#icon-Icon"></use>
             </svg>
@@ -74,12 +159,56 @@
                 Welcome home
                 <span class="hero-title-any"><br />to</span> luxury
               </h2>
-              <button href="../index.html" class="hero-btn">
+              <button
+                href="../index.html"
+                class="hero-btn"
+                data-action="hero-modal-open-btn"
+              >
                 Book a consultation
                 <svg class="hero-btn-icon">
                   <use href="../image/Group-91-93.svg#icon-Group-91"></use>
                 </svg>
               </button>
+              <div class="hero-backdrop js-hero-backdrop">
+                <div class="hero-modal">
+                  <h2 class="hero-modal-title">Leave your contacts</h2>
+                  <p class="hero-modal-paragraph">
+                    we will contact you within three hours
+                  </p>
+                  <form class="hero-modal-contact">
+                    <label class="hero-modal-label">
+                      <input
+                        type="text"
+                        class="hero-modal-input-name"
+                        placeholder="Name"
+                      />
+                    </label>
+                    <label class="hero-modal-label">
+                      <input
+                        type="number"
+                        class="hero-modal-input-number"
+                        placeholder="Phone"
+                      />
+                    </label>
+                  </form>
+
+                  <button
+                    type="submit"
+                    class="hero-modal-btn-send js-hero-modal-btn-send"
+                  >
+                    Send
+                  </button>
+                  <button
+                    type="button"
+                    class="hero-modal-close-btn"
+                    data-action="hero-modal-close-btn"
+                  >
+                    <svg class="hero-modal-close-menu">
+                      <use href="../image/close-menu.svg#icon-close-menu"></use>
+                    </svg>
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
           <ul class="social-list">
@@ -253,7 +382,7 @@
       </section>
 
       <div class="container">
-      <article class="quote-article el-scroll-hidden">
+        <article class="quote-article el-scroll-hidden">
           <p class="quote-paragraph">
             “Don’t limit yourself. Many people limit themselves to what they
             think they can do. You can go as far as your mind lets you. What you
@@ -690,6 +819,8 @@
       </div>
     </footer>
 
-    <script type="module" src="./Js/lazy-load-section.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="./Js/lazy-load-section.js" type="module"></script>
+    <script src="./Js/main.js" type="module"></script>
   </body>
 </html>
