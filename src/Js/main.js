@@ -77,32 +77,15 @@ function onEscKeyPressHero(event) {
   }
 }
 
-// SLIDER
+// SWIPER
 
-new Swiper(".swiper-container", {
-  // Стрелки
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
-  },
-  // Навигация
-  // Булеты, текущее положение, прогресбар
+new Swiper(".image-slider", {
   pagination: {
     el: ".swiper-pagination",
-    // Булеты
-    type: 'bullets',
+    type: "bullets",
     clickable: true,
-    // Динамические булеты
     dynamicBullets: true,
-    // Фракция
-    // type: 'fraction',
-    // Прогрессбар
-    // type: 'progressbar'
-    // Скролл
   },
-//   scrollbar: {
-//     el: '.swiper-scrollbar',
-//     // Возможность перетаскивать скролл
-//     draggable: true 
-//   },
+  loop: true,
+  speed: 400,
 });
