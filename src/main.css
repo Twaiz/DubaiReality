@@ -101,7 +101,7 @@ button {
 .image-slider {
   position: relative;
 
-  padding: 30px 0 70px 0;
+  padding: 80px 0 70px 0;
   overflow-x: hidden;
 }
 
@@ -679,6 +679,8 @@ button {
 
 .FAQ-item {
   position: relative;
+  height: 100%;
+  width: 100%;
   margin-bottom: 20px;
 }
 
@@ -721,6 +723,10 @@ button {
   stroke: #fcd54c;
   margin-left: auto;
 }
+
+/* .FAQ-description-show {
+  display: block;
+} */
 
 .FAQ-description {
   display: none;

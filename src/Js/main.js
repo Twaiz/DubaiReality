@@ -13,6 +13,9 @@ const refs = {
     '[data-action="hero-modal-close-btn"]'
   ),
   backdropHero: document.querySelector(".hero-backdrop"),
+
+  FaqBtn: document.querySelectorAll(".FAQ-button"),
+  FaqDescr: document.querySelector(".FAQ-description"),
 };
 
 refs.openModalBtn.addEventListener("click", onOpenModal);
@@ -89,3 +92,45 @@ new Swiper(".image-slider", {
   loop: true,
   speed: 400,
 });
+
+// FAQ
+
+// refs.FaqBtn.forEach(btn => {
+//   btn.addEventListener("click", onShowDescription);
+// });
+
+// function onShowDescription(event) {
+//   const parent = event.target.parentElement;
+//   const description = parent.querySelector(".FAQ-description");
+
+//   if (description.style.display === "block") {
+//     description.style.display = "none";
+//   } else {
+//     description.style.display = "block";
+//   }
+// }
+
+document.addEventListener("DOMContentLoaded", function() {
+  var faqButtons = document.querySelectorAll(".FAQ-button");
+
+  faqButtons.forEach(function(button) {
+    button.addEventListener("click", function() {
+      var description = button.nextElementSibling;
+      var allDescriptions = document.querySelectorAll(".FAQ-description");
+
+      allDescriptions.forEach(function(desc) {
+        if (desc !== description) {
+          desc.style.display = "none";
+        }
+      });
+
+      if (description.style.display === "block") {
+        description.style.display = "none";
+      } else {
+        description.style.display = "block";
+      }
+    });
+  });
+});
+
+
