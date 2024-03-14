@@ -70,6 +70,51 @@ button {
   transition-duration: 1s, 1s;
 }
 
+/* SWIPER */
+
+.wrapper {
+  position: relative;
+
+  padding: 30px;
+  min-height: 100%;
+  overflow-y: hidden;
+}
+
+.image-slider {
+  position: relative;
+
+  padding: 80px 0 70px 0;
+  overflow-x: hidden;
+}
+
+.image-slider__wrapper {
+  position: relative;
+}
+
+.image-slider__image {
+  margin-bottom: 30px;
+  margin-right: 30px;
+  overflow: hidden;
+}
+
+.swiper-pagination {
+  position: absolute;
+  bottom: 10px;
+}
+
+.image-slider .swiper-pagination-bullet {
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  font-size: 14px;
+  background-color: #fcd54c;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+}
+
 /* HERO */
 
 .hero-section {
@@ -166,6 +211,7 @@ button {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  overflow-y: hidden;
 }
 
 .apartment-item {

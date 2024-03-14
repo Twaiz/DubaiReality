@@ -169,5 +169,3 @@ if (window.innerWidth >= 1330) {
     });
   });
 }
-
-

@@ -53,6 +53,8 @@ body.show-modal .menu-icon {
   transition: opacity 200ms ease-in-out, visibility 200ms ease-in-out;
 }
 
+
+
 .nav {
   margin-top: 40px;
   display: flex;
