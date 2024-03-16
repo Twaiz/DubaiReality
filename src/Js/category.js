@@ -19,14 +19,16 @@ const nextPageEl = document.querySelector("#nextPage");
 const pageNumbersEl = document.querySelector("#pageNumbers");
 
 let currentPage = 1;
-const itemsPerPage = [12, 8, 4]; // количество элементов на странице для каждой страницы
-const totalPages = itemsPerPage.length;
+const maxPage = 99; // Максимальное количество страниц
+const itemsPerPage = 12; // Максимальное количество элементов на странице
+const maxItemsPage = maxPage * itemsPerPage; 
+const totalPages = maxPage; // Изменение для использования максимального количества страниц
 
 // Функция для генерации содержимого списка
 function generateListContent(page) {
   let content = "";
-  const startIndex = (page - 1) * itemsPerPage[page - 1] + 1;
-  const endIndex = startIndex + itemsPerPage[page - 1] - 1;
+  const startIndex = (page - 1) * itemsPerPage + 1;
+  const endIndex = Math.min(startIndex + itemsPerPage - 1, maxItemsPage);
 
   for (let i = startIndex; i <= endIndex; i++) {
     content += `
@@ -54,31 +56,42 @@ function updateList(page) {
 
 // Функция для обновления кнопок навигации
 function updateNavigationButtons() {
-  if (currentPage === 1) {
-    prevPageEl.disabled = true;
-  } else {
-    prevPageEl.disabled = false;
-  }
-
-  if (currentPage === totalPages) {
-    nextPageEl.disabled = true;
-  } else {
-    nextPageEl.disabled = false;
-  }
+  prevPageEl.disabled = currentPage === 1;
+  nextPageEl.disabled = currentPage === maxPage;
 }
 
 // Функция для обновления номеров страниц
 function updatePageNumbers() {
   pageNumbersEl.innerHTML = "";
-  for (let i = 1; i <= totalPages; i++) {
+  const minPage = Math.max(currentPage - 1, 1);
+  const maxPageNum = Math.min(currentPage + 2, maxPage);
+
+  for (let i = minPage; i <= maxPageNum; i++) {
     const button = document.createElement("button");
     button.textContent = i;
     button.addEventListener("click", () => {
       currentPage = i;
       updateList(currentPage);
       updateNavigationButtons();
+      updatePageNumbers(); // Обновляем номера страниц
     });
     pageNumbersEl.appendChild(button);
+  }
+
+  if (maxPageNum < maxPage) {
+    const ellipsis = document.createElement("span");
+    ellipsis.textContent = "...";
+    pageNumbersEl.appendChild(ellipsis);
+
+    const lastPageButton = document.createElement("button");
+    lastPageButton.textContent = maxPage;
+    lastPageButton.addEventListener("click", () => {
+      currentPage = maxPage;
+      updateList(currentPage);
+      updateNavigationButtons();
+      updatePageNumbers();
+    });
+    pageNumbersEl.appendChild(lastPageButton);
   }
 }
 
@@ -93,13 +106,15 @@ prevPageEl.addEventListener("click", () => {
     currentPage--;
     updateList(currentPage);
     updateNavigationButtons();
+    updatePageNumbers(); // Обновляем номера страниц
   }
 });
 
 nextPageEl.addEventListener("click", () => {
-  if (currentPage < totalPages) {
+  if (currentPage < maxPage) {
     currentPage++;
     updateList(currentPage);
     updateNavigationButtons();
+    updatePageNumbers(); // Обновляем номера страниц
   }
 });
