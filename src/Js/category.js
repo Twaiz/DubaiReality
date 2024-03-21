@@ -21,7 +21,7 @@ const pageNumbersEl = document.querySelector("#pageNumbers");
 let currentPage = 1;
 const maxPage = 99; // Максимальное количество страниц
 const itemsPerPage = 12; // Максимальное количество элементов на странице
-const maxItemsPage = maxPage * itemsPerPage; 
+const maxItemsPage = maxPage * itemsPerPage;
 const totalPages = maxPage; // Изменение для использования максимального количества страниц
 
 // Функция для генерации содержимого списка
@@ -65,33 +65,54 @@ function updatePageNumbers() {
   pageNumbersEl.innerHTML = "";
   const minPage = Math.max(currentPage - 1, 1);
   const maxPageNum = Math.min(currentPage + 2, maxPage);
+  const lastPageNum = Math.max(maxPage - 2, 1); // Номер предпоследней страницы
 
   for (let i = minPage; i <= maxPageNum; i++) {
     const button = document.createElement("button");
+    button.classList.add("page-Numbers-Item");
     button.textContent = i;
+    if (i === currentPage) {
+      button.classList.add("current-page-numbers");
+    }
     button.addEventListener("click", () => {
+      const currentPageButton = document.querySelector(".current-page-numbers");
+      currentPageButton.classList.remove("current-page-numbers");
+      button.classList.add("current-page-numbers");
       currentPage = i;
       updateList(currentPage);
       updateNavigationButtons();
-      updatePageNumbers(); // Обновляем номера страниц
+      updatePageNumbers();
     });
     pageNumbersEl.appendChild(button);
   }
 
   if (maxPageNum < maxPage) {
     const ellipsis = document.createElement("span");
+    ellipsis.classList.add("pagination-ellipsis");
     ellipsis.textContent = "...";
     pageNumbersEl.appendChild(ellipsis);
 
-    const lastPageButton = document.createElement("button");
-    lastPageButton.textContent = maxPage;
-    lastPageButton.addEventListener("click", () => {
-      currentPage = maxPage;
-      updateList(currentPage);
-      updateNavigationButtons();
-      updatePageNumbers();
-    });
-    pageNumbersEl.appendChild(lastPageButton);
+    // Создаем кнопки для последней страницы и двух предыдущих страниц
+    for (let i = lastPageNum; i <= maxPage; i++) {
+      const button = document.createElement("button");
+      button.classList.add("page-Numbers-Item");
+      button.textContent = i;
+      if (i === currentPage) {
+        button.classList.add("current-page-numbers");
+      }
+      button.addEventListener("click", () => {
+        const currentPageButton = document.querySelector(
+          ".current-page-numbers"
+        );
+        currentPageButton.classList.remove("current-page-numbers");
+        button.classList.add("current-page-numbers");
+        currentPage = i;
+        updateList(currentPage);
+        updateNavigationButtons();
+        updatePageNumbers();
+      });
+      pageNumbersEl.appendChild(button);
+    }
   }
 }
 
@@ -117,4 +138,40 @@ nextPageEl.addEventListener("click", () => {
     updateNavigationButtons();
     updatePageNumbers(); // Обновляем номера страниц
   }
+});
+
+let intervalId; // Глобальная переменная для хранения идентификатора интервала
+
+// Обработчик нажатия кнопки "назад"
+prevPageEl.addEventListener("mousedown", () => {
+  intervalId = setInterval(() => {
+    if (currentPage > 1) {
+      currentPage--;
+      updateList(currentPage);
+      updateNavigationButtons();
+      updatePageNumbers();
+    }
+  }, 300); // Задержка между переключениями в миллисекундах
+});
+
+// Обработчик отпускания кнопки "назад"
+prevPageEl.addEventListener("mouseup", () => {
+  clearInterval(intervalId); // Остановить интервал при отпускании кнопки
+});
+
+// Обработчик нажатия кнопки "вперед"
+nextPageEl.addEventListener("mousedown", () => {
+  intervalId = setInterval(() => {
+    if (currentPage < maxPage) {
+      currentPage++;
+      updateList(currentPage);
+      updateNavigationButtons();
+      updatePageNumbers();
+    }
+  }, 300); // Задержка между переключениями в миллисекундах
+});
+
+// Обработчик отпускания кнопки "вперед"
+nextPageEl.addEventListener("mouseup", () => {
+  clearInterval(intervalId); // Остановить интервал при отпускании кнопки
 });

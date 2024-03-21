@@ -113,6 +113,105 @@ button {
 .pagination {
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.pagination-wrraper {
+  display: flex;
+  padding: 3px;
+  position: relative;
+  border-top: 1px solid #511f1f; /* Верхняя граница */
+  border-bottom: 1px solid #511f1f; /* Нижняя граница */
+}
+
+.pagination-wrraper::before,
+.pagination-wrraper::after {
+  content: "";
+  position: absolute;
+  top: -4px; /* Расположение по вертикали */
+  bottom: -4px;
+  width: 1px; /* Ширина границы слева и справа */
+  background-color: #3d2323; /* Цвет границы */
+}
+
+.pagination-wrraper::before {
+  left: 3px; /* Расположение по горизонтали (левая граница) */
+}
+
+.pagination-wrraper::after {
+  right: 3px; /* Расположение по горизонтали (правая граница) */
+}
+
+.prevPage {
+  display: flex;
+  align-items: center;
+
+  border-style: none;
+  background-color: transparent;
+}
+
+.nextPage {
+  display: flex;
+  align-items: center;
+
+  border-style: none;
+  background-color: transparent;
+}
+
+.pagination-btn-icon {
+  width: 11px;
+  height: 18px;
+  stroke: #929292;
+}
+
+.prev {
+  transform: rotate(180deg);
+}
+
+.next {
+  transform: rotate();
+}
+
+.pageNumbers {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+.page-Numbers-Item {
+  width: 24px;
+  height: 24px;
+
+  font-family: var(--second-family);
+  font-weight: 400;
+  font-size: 14px;
+  color: #fff;
+
+  border-style: none;
+  background-color: transparent;
+}
+
+.current-page-numbers {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+
+  width: 24px;
+  height: 34px;
+
+  margin-left: 5px;
+  margin-right: 5px;
+
+  background-color: #fcd54c;
+}
+
+.pagination-ellipsis {
+  font-family: var(--second-family);
+  font-weight: 400;
+  font-size: 14px;
+  color: #929292;
 }
 
 /* HERO */
